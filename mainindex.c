@@ -5,7 +5,7 @@
 
 //Khai báo biến và cấu trúc 
 
-// Cấu trúc nhân viên 
+//Các cấu trúc của nhân viên 
 struct NgaySinh {
     int ngay;
     int thang;
@@ -52,9 +52,8 @@ int main(){
 
 // hàm tạo danh sách nhân viên
 void createNVList(NVList *NV_List){
-    NVList NV_Lish;
-    NV_Lish.head = NULL;
-    NV_Lish.tail = NULL;
+    (*NV_List).head = NULL;
+    (*NV_List).tail = NULL;
 }
 // tạo một node nhân viên mới
 NVNode* createNVNode(NV newNV){
