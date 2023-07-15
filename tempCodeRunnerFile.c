@@ -1,2 +1,2 @@
 
-        node->next = NV_List->head;
+    While(f!=NULL){
