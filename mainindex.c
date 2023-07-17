@@ -82,7 +82,7 @@ void enterNgaySinh(NgaySinh* ngay_Sinh);   // nhap vap ngay sinh
 void enterNV(NV* newNV);                   // nhap vao thong tin nhan vien
 void addHeadNVList(NVList* NV_List, NVNode* node); // them 1 node vao dau danh sach
 void addTailNVList(NVList* NV_List, NVNode* node);         //them 1 node vao cuoi danh sach  
-void addAtPositionNVList(NVList* NV_List, NVNode* new_node, int position); 
+void addAtPositionNVList(NVList* NV_List, NVNode* newNode, int position); 
 int removeHeadNVList(NVList* NV_List);  //xoa nhan vien dau danh sach
 int removeTailNVList(NVList* NV_List);
 int removeAtPositionNVList(NVList* NV_List, int position);
@@ -97,10 +97,15 @@ void createDTList(DTList* DT_List);
 DTNode* createDTNode(DT newDTNode);
 void enterDT(DT* newDT); 
 void addHeadDTList(DTList* DT_List, DTNode* node);
-
-
-
-
+void addTailDTList(DTList* DT_List, DTNode* node);
+void addAtPositionDTList(DTList* DT_List, DTNode* newNode, int position);
+int removeHeadDTList(DTList* DT_List);
+int removeTailDTList(DTList* DT_List);
+int removeAtPositionDTList(DTList* DT_List, int position);
+int updateDTList(DTList *DT_List);
+void printDTList(DTList DT_List);
+void exportFileDT(DTList DT_List);
+void importFileDT(DTList* DT_List); 
 
 
 int main() {
@@ -122,14 +127,24 @@ int main() {
 //    enterNV(&newNV2);
 //    newNVNode2 = createNVNode(newNV2);
 //    addTailNVList(&NV_List, newNVNode2);
-    importFileNV(&NV_List);
-    removeHeadNVList(&NV_List);
-    printNVList(NV_List);
-    enterDT(&newDT);
+//    importFileNV(&NV_List);
+//    removeHeadNVList(&NV_List);
+//    printNVList(NV_List);
+//    enterDT(&newDT);
+//    printf("%d", strlen(newDT.maDT));
+//    updateDTList(&DT_List);
 //	exportFileNV(NV_List);
+//	printNVList(NV_List);
+	printDTList(DT_List);
+//	exportFileDT(DT_List);
+//	updateNVList(&NV_List);
 //	printNVList(NV_List);
     return 0;
 }
+
+
+
+
 
 // xoa xuong dong
 void deleteNewline(char x[]) {
@@ -215,11 +230,11 @@ void addTailNVList(NVList* NV_List, NVNode* node) {
     }
 }
 
-void addAtPositionList(NVList* NV_List, NVNode* new_node, int position) {
+void addAtPositionNVList(NVList* NV_List, NVNode* newNode, int position) {
     if (position <= 0) {
-        addHeadNVList(NV_List, new_node);
+        addHeadNVList(NV_List, newNode);
     } else if (position >= countNV(*NV_List)) {
-        addTailNVList(NV_List, new_node);
+        addTailNVList(NV_List, newNode);
     } else {
         NVNode* node = NV_List->head;
         int count = 0;
@@ -227,8 +242,8 @@ void addAtPositionList(NVList* NV_List, NVNode* new_node, int position) {
             node = node->next;
             count++;
         }
-        new_node->next = node->next;
-        node->next = new_node;
+        newNode->next = node->next;
+        node->next = newNode;
     }
 }
 
@@ -248,21 +263,22 @@ int removeHeadNVList(NVList* NV_List){
 
 int removeTailNVList(NVList* NV_List) {
     if (NV_List->head == NULL) {
+    	return 0;
     } else if (NV_List->head == NV_List->tail) {
         free(NV_List->head);
         NV_List->head = NULL;
         NV_List->tail = NULL;
         return 1;
     } else {
-        NVNode* prev_node = NULL;
-        NVNode* current_node = NV_List->head;
-        while (current_node->next != NULL) {
-            prev_node = current_node;
-            current_node = current_node->next;
+        NVNode* prevNode = NULL;
+        NVNode* currentNode = NV_List->head;
+        while (currentNode->next != NULL) {
+            prevNode = currentNode;
+            currentNode = currentNode->next;
         }
-        free(current_node);
-        prev_node->next = NULL;
-        NV_List->tail = prev_node;
+        free(currentNode);
+        prevNode->next = NULL;
+        NV_List->tail = prevNode;
         return 1;
     }
 }
@@ -274,16 +290,16 @@ int removeAtPositionNVList(NVList* NV_List, int position) {
     } else if (position >= countNV(*NV_List)) {
         return removeTailNVList(NV_List);
     } else {
-        NVNode* prev_node = NULL;
-        NVNode* current_node = NV_List->head;
+        NVNode* prevNode = NULL;
+        NVNode* currentNode = NV_List->head;
         int count = 0;
         while (count < position) {
-            prev_node = current_node;
-            current_node = current_node->next;
+            prevNode = currentNode;
+            currentNode = currentNode->next;
             count++;
         }
-        prev_node->next = current_node->next;
-        free(current_node);
+        prevNode->next = currentNode->next;
+        free(currentNode);
         return 1;
     }
 }
@@ -292,19 +308,17 @@ int removeAtPositionNVList(NVList* NV_List, int position) {
 
 int updateNVList(NVList* NV_List) {
 	int maSoNV;
+	NVNode* node = NV_List->head;
 	printf("\nNhap vao ma so nhan vien: ");
 	scanf("%d", &maSoNV);
-    NVNode* node = NV_List->head;
     while (node != NULL) {
         if (node->data.maSoNV == maSoNV) {
-            // Tìm th?y nhân viên c?n c?p nh?t
             printf("Nhap thong tin moi cho nhan vien (Ma so nhan vien: %d):\n", maSoNV);
             enterNV(&node->data);
             return 1;
         }
         node = node->next;
     }
-    // Không tìm th?y nhân viên
     return 0;
 }
 
@@ -320,19 +334,22 @@ void printNVList(NVList NV_List) {
             node = node->next;
         }
     }
+    else{
+    	printf("\nDanh sach nhan vien trong !");
+	}
 }
 
 // xuat vao file NV.bin
 void exportFileNV(NVList NV_List) {
+	int count = countNV(NV_List);
+	NVNode* node = NV_List.head;
     FILE* f;
     f = fopen("NV.bin", "wb");
     if (f == NULL) {
         printf("Khong the mo file de ghi!");
         return;
     }
-    int count = countNV(NV_List);
     fwrite(&count, sizeof(count), 1, f);
-    NVNode* node = NV_List.head;
     while (node != NULL) {
         fwrite(&node->data, sizeof(NV), 1, f);
         node = node->next;
@@ -343,16 +360,16 @@ void exportFileNV(NVList NV_List) {
 // doc du lieu tu file NV.bin
 void importFileNV(NVList* NV_List) {
 	int i;
+	int count;
+	NV newNV;
     FILE* f;
     f = fopen("NV.bin", "rb");
     if (f == NULL) {
         printf("Khong the mo file de doc!");
         return;
     }
-    int count;
     fread(&count, sizeof(count), 1, f);
     for (i = 0; i < count; i++) {
-        NV newNV;
         fread(&newNV, sizeof(NV), 1, f);
         NVNode* newNVNode = createNVNode(newNV);
         addTailNVList(NV_List, newNVNode);
@@ -394,7 +411,7 @@ DTNode* createDTNode(DT newDT) {
 void enterDT(DT* newDT) {
     printf("\nMa de tai: ");
     fgets(newDT->maDT, sizeof(newDT->maDT),stdin);
-    deleteNewline(newDT->tenDT);
+    deleteNewline(newDT->maDT);
     printf("\nTen De Tai: ");
     fgets(newDT->tenDT, sizeof(newDT->tenDT), stdin);
     deleteNewline(newDT->tenDT);
@@ -406,20 +423,205 @@ void enterDT(DT* newDT) {
     scanf("%ld", &newDT->kinhPhi);
 }
 
+void addHeadDTList(DTList* DT_List, DTNode* node){
+	if(DT_List->head == NULL){
+		DT_List->head = node;
+		DT_List->tail = node;
+	}
+	else{
+		node->next = DT_List->head;
+		DT_List->head = node;
+	}
+}
+
+
+void addTailDTList(DTList* DT_List, DTNode* node){
+	if(DT_List->head == NULL){
+		DT_List->head = node;
+		DT_List->tail = node;
+	}
+	else{
+		DT_List->tail->next = node;
+		DT_List->tail = node;
+	}
+}
+
+
+void addAtPositionDTList(DTList* DT_List, DTNode* newNode, int position) {
+    if (position <= 0) {
+        addHeadDTList(DT_List, newNode);
+    } else if (position >= countDT(*DT_List)) {
+        addTailDTList(DT_List, newNode);
+    } else {
+        DTNode* node = DT_List->head;
+        int count = 0;
+        while (count < position - 1) {
+            node = node->next;
+            count++;
+        }
+        newNode->next = node->next;
+        node->next = newNode;
+    }
+}
+
+
+int removeHeadDTList(DTList* DT_List){
+	if (DT_List->head != NULL){
+		DTNode* node = DT_List->head;
+		DT_List->head = node->next;
+		free(node);
+		if(DT_List->head == NULL){
+			DT_List->tail = NULL;
+		}
+		return 1;
+	}
+	return 0;
+}
 
 
 
+int removeTailDTList(DTList* DT_List){
+	if (DT_List->head == NULL){
+		return 0;
+	}
+	else if (DT_List->head == DT_List->tail){
+		free(DT_List->head);
+		DT_List->head = NULL;
+		DT_List->tail = NULL;
+	}
+	else{
+		DTNode* prevNode = NULL;
+		DTNode* currentNode = DT_List->head;
+		while(currentNode->next != NULL){
+			prevNode = currentNode;
+			currentNode = currentNode->next;
+		}
+		free(currentNode);
+		prevNode->next = NULL;
+		DT_List->tail = prevNode;
+	}
+}
+ 
+
+ int removeAtPositionDTList(DTList* DT_List, int position){
+ 	if (position<=0){
+ 		return removeHeadDTList(DT_List);
+	 }
+	 else if (position >= countDT(*DT_List)){
+	 	return removeTailDTList(DT_List);
+	 }
+	 else{
+	 	DTNode* prevNode = NULL;
+	 	DTNode* currentNode = DT_List->head;
+	 	int count = 0;
+	 	while(count < position){
+	 		prevNode = currentNode;
+	 		currentNode = currentNode->next;
+	 		count++;
+		 }
+		prevNode->next = currentNode->next;
+		free(currentNode);
+	 }
+ }
+ 
+ 
+
+int updateDTList(DTList* DT_List){
+	char maDT[50];
+	DTNode* node = DT_List->head;
+	printf("\nNhap vao ma de tai: ");
+	fgets(maDT, sizeof(maDT),stdin);
+	deleteNewline(maDT);
+	printf("%d", strlen(maDT));
+	while(node != NULL){
+		if (strcmp(node->data.maDT, maDT) == 0){
+			printf("\nNhap vao thong tin moi cho de tai (Ma de tai: %s):", maDT);
+			enterDT(&node->data);
+			return 1;
+		}
+		node = node->next;
+	}
+	return 0;
+}
 
 
 
+void printDTList(DTList DT_List){
+	if (DT_List.head != NULL){
+		DTNode* node = DT_List.head;
+		printf("\n |%20s \t |%50s \t |%20s \t |%20s \t |%30s |", "Ma de tai", "Ten de tai", "Nam bat dau", "Nam ket thuc","Kinh phi de tai");
+		while(node != NULL){
+			printf("\n |%20s \t |%50s \t |%20d \t |%20d \t |%30ld |", node->data.maDT, node->data.tenDT, node->data.namBatDau, node->data.namKetThuc, node->data.kinhPhi );
+			node = node->next;
+		}
+	}
+	else{
+		printf("Danh sach de tai trong !");
+	}
+}
 
 
+//struct DeTai{
+//	char maDT[50];
+//	char tenDT[100];
+//	int namBatDau;
+//	int namKetThuc;
+//	long int kinhPhi;
+//}; 
 
+void exportFileDT(DTList DT_List){
+	int count = countDT(DT_List);
+	DTNode* node;
+	FILE* f;
+	f = fopen("DT.bin","wb");
+	if (f == NULL){
+		printf("Khong the mo file de ghi!");
+		return;
+	}
+	fwrite(&count, sizeof(count), 1, f);
+	while(node != NULL){
+		fwrite(&node->data, sizeof(DT), 1, f);
+		node = node->next;
+	}
+	fclose(f);
+}
 
-
-
-
-
+//void importFileNV(NVList* NV_List) {
+//	int i;
+//    FILE* f;
+//    f = fopen("NV.bin", "rb");
+//    if (f == NULL) {
+//        printf("Khong the mo file de doc!");
+//        return;
+//    }
+//    int count;
+//    fread(&count, sizeof(count), 1, f);
+//    for (i = 0; i < count; i++) {
+//        NV newNV;
+//        fread(&newNV, sizeof(NV), 1, f);
+//        NVNode* newNVNode = createNVNode(newNV);
+//        addTailNVList(NV_List, newNVNode);
+//    }
+//    fclose(f);
+//}
+void importFileDT(DTList* DT_List){
+	int i;
+	int count;
+	DT newDT;
+	FILE* f;
+	f = fopen("DT.bin", "rb");
+	if(f == NULL){
+		printf("Khong the mo file de dod!");
+		return;
+	}
+	fread(&count, sizeof(count), 1, f);
+	for (i=0; i<count; i++){
+		fread(&newDT, sizeof(DT), 1, f);
+		DTNode* newDTNode = createDTNode(newDT);
+		addTailDTList(DT_List, newDTNode);
+	}
+	fclose(f);
+}
 
 
 
