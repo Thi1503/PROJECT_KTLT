@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 // Khai bao ham va cau truc
 
 // Cau truc cua ngay sinh
@@ -170,139 +171,328 @@ void exportFileNVDT(NVDTList NVDT_List);
 void importFileNVDT(NVDTList* NVDT_List); 
 
 
-static int menuPoint1 = 0;
-static int menuPoint2 = 0;
-static int menuPointNV = 0;
-int main() {
-	addNVDTToList(&NVDT_List);
-//	importFileNVDT(&NVDT_List); 
-//	printNVDTList(NVDT_List);
-//	removeNVDTByMaDTAndMaSoNV(&NVDT_List);
-//	printNVDTList(NVDT_List);
-	
-	
-	
-//	menuLevelOne(menuPoint1);
-//	int programRun =1;
-//	int runNV=1;
-//	while(programRun){
-//		char c = getch();
-//		if (c == -32){
-//			c = getch();
-//		}
-//	switch(c){
-//		case 0:
-//			
-//		case 72: //up
-//			menuPoint1 = menuPoint1 - 1;
-//			system("cls||clear");
-//			menuLevelOne(menuPoint1);
-//		break;
-//		
-//		case 80: //down
-//			menuPoint1 = menuPoint1 + 1;
-//			system("cls||clear");
-//			menuLevelOne(menuPoint1);
-//		break;
-//		
-//		case 13: // enter
-//			switch ((unsigned int) menuPoint1 % 3){
-//				case 0:
-//					system("cls||clear");
-////					menuNV(menuPointNV);
-//					menuNV_LV1(menuPointNV);
-//					break;
-//					
-//				case 1:
-//					printf("De tai\n");
-//					break;
-//				
-//				case 3:
-//					printf("Nhiem vu de tai\n");
-//					break;
-//			}
-//		break;
-//		case 27:
-//		case 8:
-//			programRun = 0;
-//			printf("Ket thuc chuong trinh\n");
-//			break;
-//	}
-//	
-//	}
-//	return 0;
-}
 
 
-void menuLevelOne(int choose){
-	int i;
-	char menuOne[3][100] ={
-		"|  | 1. Nhan vien\n",
-		"|  | 2. De tai\n",
-		"|  | 3. Nhiem vu de tai\n"
-	};
-	
-	printf("Menu lua chon: \n");
-	
-	*(menuOne[(unsigned int)choose%3]+1) = (char)45;
-	*(menuOne[(unsigned int)choose%3]+2) = (char)62;
-	for(i= 0; i<3;i++){
-		printf(menuOne[i]);
-	}
-}
+void menuMain(int choose);
 
-void menuNV(int choose){
-	int i;
-	char menuNV[3][100] ={
-		"|  | 1. Bo sung du lieu\n",
-		"|  | 2. Xoa du lieu\n",
-		"|  | 3. Cap nhat du lieu\n"
-	};
-	printf("Chon thao tac xu ly voi bang \"Nhan vien\" "": \n");
-	
-	*(menuNV[(unsigned int)choose%3]+1) = (char)45;
-	*(menuNV[(unsigned int)choose%3]+2) = (char)62;
-	for(i= 0; i<3;i++){
-		printf(menuNV[i]);
-	}
-}
 
-void menuNV_LV1(int choose){
-	menuNV(choose);
-	int runNV =1;
-	while(runNV){
-		char cNV = getch();
-		if (cNV == -32){
-			cNV = getch();
+
+int main(){
+	int flag, flag1, flag2, flag3, flag4;
+	char c, c1, c3;
+	menuMain(flag);
+
+	int run = 1;
+	int run1, run2;
+	while(run){
+		c = getch();
+		if(c == -32){
+			c = getch();
 		}
-		switch(cNV){
-			case 72:
-				choose = choose -1;
-				system("cls||clear");
-				menuNV(choose);
+		switch(c){
+			case 72: // Up
+				flag -= 1;
+				system("cls || clear");
+				menuMain(flag);
 			break;
+			
+			case 80: // down
+				flag += 1;
+				system("cls || clear");
+				menuMain(flag);
+			break;
+			
+			case 77:
+			case 13:
+				switch((unsigned int)flag%10){
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+						system("cls || clear");
+						flag1 = 0;
+						menu1(flag1);
+						run1 = 1;
+						
+						while(run1 && (unsigned int)flag%10 == 0){
+							c1 = getch();
+							if (c1 == -32){
+								c1 = getch();
+							}
+							switch(c1){
+								case 72:
+									flag1 -= 1;
+									system("cls || clear");
+									menu1(flag1);
+								break;
 								
-			case 80:
-				choose = choose +1;
-				system("cls||clear");
-				menuNV(choose);
+								case 80:
+									flag1 += 1;
+									system("cls || clear");
+									menu1(flag1);
+								break;
+								
+								case 77:
+								case 13:
+									switch((unsigned int)flag1%4){
+										case 0:
+											printNVList(NV_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 1:
+											printDTList(DT_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 2:
+											printNVDTList(NVDT_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 3:
+											system("cls || clear");
+											run1 = 0;
+											flag = 0;
+											menuMain(flag);
+										break;
+									}
+									
+								break;
+								case 75:
+								case 8:
+									run1 = 0;
+									system("cls || clear");
+									flag = 0;
+									menuMain(flag);
+								break;
+							}
+						}
+						while(run1 && (unsigned int)flag%10 == 1){
+							c1 = getch();
+							if (c1 == -32){
+								c1 = getch();
+							}
+							switch(c1){
+								case 72:
+									flag1 -= 1;
+									system("cls || clear");
+									menu1(flag1);
+								break;
+								
+								case 80:
+									flag1 += 1;
+									system("cls || clear");
+									menu1(flag1);
+								break;
+								
+								case 77:
+								case 13:
+									switch((unsigned int)flag1%4){
+										case 0:
+											addNVToList(&NV_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 1:
+											addDTToList(&DT_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 2:
+											addNVDTToList(&NVDT_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 3:
+											system("cls || clear");
+											run1 = 0;
+											flag = 0;
+											menuMain(flag);
+										break;
+									}
+									
+								break;
+								case 75:
+								case 8:
+									run1 = 0;
+									system("cls || clear");
+									flag = 0;
+									menuMain(flag);
+								break;
+							}
+						}
+						
+						while(run1 && (unsigned int)flag%10 == 2){
+							c1 = getch();
+							if (c1 == -32){
+								c1 = getch();
+							}
+							switch(c1){
+								case 72:
+									flag1 -= 1;
+									system("cls || clear");
+									menu1(flag1);
+								break;
+								
+								case 80:
+									flag1 += 1;
+									system("cls || clear");
+									menu1(flag1);
+								break;
+								
+								case 77:
+								case 13:
+									switch((unsigned int)flag1%4){
+										case 0:
+											removeNVByMaSoNV(&NV_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 1:
+											removeDTByMaDT(&DT_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 2:
+											removeNVDTByMaDTAndMaSoNV(&NVDT_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 3:
+											system("cls || clear");
+											run1 = 0;
+											flag = 0;
+											menuMain(flag);
+										break;
+									}
+									
+								break;
+								case 75:
+								case 8:
+									run1 = 0;
+									system("cls || clear");
+									flag = 0;
+									menuMain(flag);
+								break;
+							}
+						}
+					break;
+					
+					case 4:
+						//yeu cau 3;
+					break;
+					
+					case 5:
+						//yeu cau 4;
+					break;
+					
+					case 6:
+						//yeu cau 5;
+					break;
+					
+					case 7:
+						//yeu cau 6;
+					break;
+					
+					case 8:
+						// luu du lieu;
+					break;
+					
+					case 9:
+						// thoat chuong trinh
+						run =0;
+					break;
+				}	
 			break;
-							
+			
 			case 75:
 			case 27:
 			case 8:
+				run = 0;
 			break;
-		}
+		}	
 	}
 }
+	
 
 
 
+void menuMain(int choose){
+	int i;
+	printf("|-------------------------------------MENU----------------------------------------|\n");
+	char menuTitle[10][100] = {
+		"|  | 1. Hien thi du lieu.                                                         |\n",
+		"|  | 2. Bo sung du lieu.                                                          |\n",
+		"|  | 3. Xoa du lieu.                                                              |\n",
+		"|  | 4. Sua chua du lieu.                                                         |\n",
+		"|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |\n",
+		"|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |\n",
+		"|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |\n",
+		"|  | 8. Tinh tong kinh phi.                                                       |\n",
+		"|  | 9. Luu ket qua.                                                              |\n",
+		"|  | 10.Ket thuc chuong trinh.                                                    |\n"
+	};
+	*(menuTitle[(unsigned int)choose%10] + 1) = (char)45;
+	*(menuTitle[(unsigned int)choose%10] + 2) = (char)62;
+	for(i = 0; i < 10 ; i++){
+		printf(menuTitle[i]);
+	}
+	printf("|---------------------------------------------------------------------------------|\n");
+}
 
-
-
-
-
+void menu1(int choose){
+	int i;
+	printf("|-----------Hien thi du lieu--------------|\n");
+	char menuTitle[4][50] = {
+		"|  | 1. Nhan vien.                        |\n",
+		"|  | 2. De tai.                           |\n",
+		"|  | 3. Nhien vu de tai.                  |\n",
+		"|  | 4. Quay lai.                         |\n"
+	};
+	*(menuTitle[(unsigned int)choose%4] + 1) = (char)45;
+	*(menuTitle[(unsigned int)choose%4] + 2) = (char)62;
+	for(i = 0; i < 4 ; i++){
+		printf(menuTitle[i]);
+	}
+	printf("|-----------------------------------------|\n");
+}
 
 
 
@@ -378,12 +568,6 @@ int checkNV(int maSoNV) {
 void enterNV(NV* newNV) {
     printf("\nMa so nhan vien: ");
     scanf("%d", &newNV->maSoNV);
-    while(checkNV(newNV->maSoNV)==1){
-    	printf("\nMa so nhan vien da ton tai trond danh sach !");
-    	printf("\nVui long nhap lai ma so nhan vien khac !");
-    	printf("\nMa so nhan vien: ");
-        scanf("%d", &newNV->maSoNV);
-	}
     printf("Ho ten dem: ");
     getchar();
     fgets(newNV->hoDem, sizeof(newNV->hoDem), stdin);
@@ -548,38 +732,43 @@ NVNode* getNVNode(NVList* NV_List, int position){
 }
 
 
-NVNode* searchNVNodeByMaSoNV(NVList NV_List){
-	int maSoNV;
-	NVNode* node = NV_List.head;
-	printf("\nNhap vao ma so nhan vien: ");
-	scanf("%d", &maSoNV);
-	while (node != NULL && node->data.maSoNV != maSoNV){
-		node = node->next;
-	}
-	if(node != NULL){
-		return node;
-	}
-	else{
-		printf("\nNhan vien khong co trong danh sach!");
-		return NULL;
-	}
-	
-}
+NVNode* searchNVNodeByMaSoNV(NVList NV_List) {
+    int maSoNV;
+    printf("\nNhap vao ma so nhan vien: ");
+    scanf("%d", &maSoNV);
 
-int updateNVList(NVList* NV_List) {
-	int maSoNV;
-	NVNode* node = NV_List->head;
-	printf("\nNhap vao ma so nhan vien: ");
-	scanf("%d", &maSoNV);
+    NVNode* node = NV_List.head;
+
     while (node != NULL) {
         if (node->data.maSoNV == maSoNV) {
-            printf("Nhap thong tin moi cho nhan vien (Ma so nhan vien: %d):\n", maSoNV);
-            enterNV(&node->data);
-            return 1;
+            return node;
         }
         node = node->next;
     }
-    return 0;
+
+    printf("\nNhan vien khong co trong danh sach!");
+    return NULL; 
+}
+
+int updateNVList(NVList* NV_List) {
+	NVNode* nodeUpdate = searchNVNodeByMaSoNV(*NV_List);
+	if(nodeUpdate != NULL){
+		printf("\nNhap vao cac chinh sua cua nhan vien co ma so: %d", nodeUpdate->data.maSoNV);
+		printf("\nHo ten dem: ");
+    	getchar();
+    	fgets(nodeUpdate->data.hoDem, sizeof(nodeUpdate->data.hoDem), stdin);
+    	deleteNewline(nodeUpdate->data.hoDem);
+    	printf("Ten nhan vien: ");
+    	fgets(nodeUpdate->data.tenNV, sizeof(nodeUpdate->data.tenNV), stdin);
+    	deleteNewline(nodeUpdate->data.tenNV);
+    	printf("Gioi tinh: ");
+    	fgets(nodeUpdate->data.gioiTinh, sizeof(nodeUpdate->data.gioiTinh), stdin);
+    	deleteNewline(nodeUpdate->data.gioiTinh);
+    	enterNgaySinh(&nodeUpdate->data.ngaySinh);
+    	
+		return 1;
+	}
+	return 0;
 }
 
 
@@ -614,8 +803,16 @@ void addNVToList(NVList* NV_List) {
     NV *newNV = (NV*)malloc(size * sizeof(NV));
     for (i = 0; i < size; i++) {
         printf("\nNhan vien thu %d", i + 1);
-        enterNV(&newNV[i]);
-        writeToTailNVFile(newNV[i]);
+        do{
+        	 enterNV(&newNV[i]);
+        	 if(checkNV(newNV[i].maSoNV)==1){
+        	 	printf("\nMa so nhan vien da co trong danh sach !");
+        	 	printf("\nVui long nhap lai !");
+        	 	printf("\nNhan vien thu %d", i + 1);
+			 }
+		} while(checkNV(newNV->maSoNV));
+        
+//        writeToTailNVFile(newNV[i]);
         NVNode *node = createNVNode(newNV[i]);
         addTailNVList(NV_List, node);
     }
@@ -719,13 +916,6 @@ void enterDT(DT* newDT) {
     printf("\nMa de tai: ");
     fgets(newDT->maDT, sizeof(newDT->maDT), stdin);
     deleteNewline(newDT->maDT);
-    while (checkDT(newDT->maDT) == 1) {
-        printf("\nMa de tai da ton tai trong danh sach !");
-        printf("\nVui long nhap lai ma de tai !");
-        printf("\nMa de tai: ");
-        fgets(newDT->maDT, sizeof(newDT->maDT), stdin);
-        deleteNewline(newDT->maDT);
-    }
     printf("\nTen De Tai: ");
     fgets(newDT->tenDT, sizeof(newDT->tenDT), stdin);
     deleteNewline(newDT->tenDT);
@@ -922,19 +1112,20 @@ DTNode* searchDTNodeByMaDeTai(DTList DT_List) {
 
 
 int updateDTList(DTList* DT_List){
-	char maDT[50];
-	DTNode* node = DT_List->head;
-	printf("\nNhap vao ma de tai: ");
-	fgets(maDT, sizeof(maDT),stdin);
-	deleteNewline(maDT);
-	while(node != NULL){
-		if (strcmp(node->data.maDT, maDT) == 0){
-			printf("\nNhap vao thong tin moi cho de tai (Ma de tai: %s):", maDT);
-			enterDT(&node->data);
-			return 1;
-		}
-		node = node->next;
+	DTNode* nodeUpdate = searchDTNodeByMaDeTai(*DT_List);
+	if(nodeUpdate != NULL){
+		printf("\nNhap vao cac chinh sua cua de tai co ma la: %s", nodeUpdate->data.maDT);
+		printf("\nTen De Tai: ");
+	    fgets(nodeUpdate->data.tenDT, sizeof(nodeUpdate->data.tenDT), stdin);
+	    deleteNewline(nodeUpdate->data.tenDT);
+	    printf("\nNam bat dau: ");
+	    scanf("%d", &nodeUpdate->data.namBatDau);
+	    printf("\nNam ket thuc: ");
+	    scanf("%d", &nodeUpdate->data.namKetThuc);
+	    printf("\nKinh phi de tai: ");
+	    scanf("%ld", &nodeUpdate->data.kinhPhi);
 	}
+	
 	return 0;
 }
 
@@ -964,12 +1155,20 @@ void addDTToList(DTList* DT_List) {
     int size;
     printf("\nNhap vao so luong de tai: ");
     scanf("%d", &size);
+    getchar();
     DT *newDT = (DT*)malloc(size * sizeof(DT));
     for (i = 0; i < size; i++) {
         printf("\nDe tai thu %d", i + 1);
-//        getchar();
-        enterDT(&newDT[i]);
-        writeToTailDTFile(newDT[i]);
+        do{
+        	enterDT(&newDT[i]);
+        	getchar();
+        	if(checkDT(newDT[i].maDT)){
+        		printf("\nMa de tai da co trong danh sach");
+        		printf("\nVui long nhap lai !");
+        		printf("\nDe tai thu %d", i + 1);
+			}
+		}while(checkDT(newDT[i].maDT));
+        
         DTNode *node = createDTNode(newDT[i]);
         addTailDTList(DT_List, node);
     }
@@ -1075,18 +1274,9 @@ void enterNVDT(NVDT* newNVDT) {
    	printf("\nMa so nhan vien: ");
    	scanf("%d", &newNVDT->maSoNV);
    	getchar();
-   	while(checkNVDT(newNVDT->maDT, newNVDT->maSoNV)==1){
-   		printf("\nNhien vu de tai da ton tai trong danh sach !");
-   		printf("\nVui long nhap lai !");
-   		printf("\nMa de tai: ");
-        fgets(newNVDT->maDT, sizeof(newNVDT->maDT),stdin);
-        deleteNewline(newNVDT->maDT);
-   	    printf("\nMa so nhan vien: ");
-   	    scanf("%d", &newNVDT->maSoNV);
-   	    getchar();
-   	}
    	printf("\nVai tro: ");
    	fgets(newNVDT->vaiTro, sizeof(newNVDT->vaiTro), stdin);
+   	deleteNewline(newNVDT->vaiTro);
 }
 
 void addHeadNVDTList(NVDTList* NVDT_List, NVDTNode* node){
@@ -1194,7 +1384,7 @@ int removeTailNVDTList(NVDTList* NVDT_List){
  
  void removeNVDTByMaDTAndMaSoNV(NVDTList* NVDT_List){
     NVDTNode* nodeToDelete = searchNVDTNodeByMaDeTaiAndMaSoNV(*NVDT_List);
-    printNVDTNode(*nodeToDelete);
+
     if (nodeToDelete != NULL) {
         	if (nodeToDelete == NVDT_List->head) {
             	NVDT_List->head = nodeToDelete->next;
@@ -1247,8 +1437,8 @@ NVDTNode* searchNVDTNodeByMaDeTaiAndMaSoNV(NVDTList NVDT_List) {
     while (node != NULL) {
         if (strcmp(node->data.maDT, maDT) == 0 && node->data.maSoNV == maSoNV) {
           
-            printNVDTNode(*node);
             return node;
+
         }
         node = node->next;
     }
@@ -1258,23 +1448,17 @@ NVDTNode* searchNVDTNodeByMaDeTaiAndMaSoNV(NVDTList NVDT_List) {
     return NULL;
 }
 
+
+
  
 int updateNVDTList(NVDTList* NVDT_List){
-	char maDT[50];
-	int maSoNV;
-	NVDTNode* node = NVDT_List->head;
-	printf("\nNhap vao ma de tai: ");
-	fgets(maDT, sizeof(maDT),stdin);
-	deleteNewline(maDT);
-	printf("\nNhap vao ma so nhan vien: ");
-	scanf("%d", &maSoNV);
-	while(node != NULL){
-		if ((strcmp(node->data.maDT, maDT) == 0 )&& (maSoNV == node->data.maSoNV)){
-			printf("\nNhap vao thong tin moi cho nhiem vu de tai (ma de tai %s, ma so nhan vien %d)", maDT, maSoNV);
-			enterNVDT(&node->data);
-			return 1;
-		}
-		node = node->next;
+	NVDTNode* nodeUpdate = searchNVDTNodeByMaDeTaiAndMaSoNV(*NVDT_List);
+	if(nodeUpdate != NULL){
+		printf("\nNhap vao cac chinh sua cua nhiem vu de tai co ma de tai %s va ma so nhan vien %s", nodeUpdate->data.maDT, nodeUpdate->data.maSoNV);
+		printf("\nVai tro: ");
+	   	fgets(nodeUpdate->data.vaiTro, sizeof(nodeUpdate->data.vaiTro), stdin);
+	   	deleteNewline(nodeUpdate->data.vaiTro);
+	   	return 1;
 	}
 	return 0;
 }
@@ -1282,9 +1466,9 @@ int updateNVDTList(NVDTList* NVDT_List){
 void printNVDTList(NVDTList NVDT_List){
 	if (NVDT_List.head != NULL){
 		NVDTNode* node = NVDT_List.head;
-		printf("\n |%20s \t |%30s  \t|%30s|", "Ma de tai", "Ma so nhan vien", "Vai tro");
+		printf("\n|%20s \t |%20s  \t|%20s|", "Ma de tai", "Ma so nhan vien", "Vai tro");
 		while(node != NULL){
-			printf("\n |%20s \t |%30d  \t|%30s|", node->data.maDT, node->data.maSoNV, node->data.vaiTro);
+			printf("\n|%20s \t |%20d  \t|%20s|", node->data.maDT, node->data.maSoNV, node->data.vaiTro);
 			node = node->next;
 		}
 	}
@@ -1299,6 +1483,28 @@ void printNVDTNode(NVDTNode node){
 }
 
 
+int checkNVDT_NV(int maSoNV) {
+    NVNode* node = NV_List.head;
+    while (node != NULL) {
+        if (maSoNV == node->data.maSoNV) {
+            return 1;
+        }
+        node = node->next;
+    }
+    return 0;
+}
+
+ int checkNVDT_DT(char maDT[]) {
+    DTNode* node = DT_List.head;
+    while (node != NULL) {
+        if (strcmp(node->data.maDT, maDT) == 0) {
+            return 1;
+        }
+        node = node->next;
+    }
+    return 0;
+}
+
 void addNVDTToList(NVDTList* NVDT_List) {
     int i;
     int size;
@@ -1308,9 +1514,26 @@ void addNVDTToList(NVDTList* NVDT_List) {
     NVDT *newNVDT = (NVDT*)malloc(size * sizeof(NVDT));
     for (i = 0; i < size; i++) {
         printf("\nNhiem vu de tai thu %d", i + 1);
-//        getchar();
-        enterNVDT(&newNVDT[i]);
-        writeToTailNVDTFile(newNVDT[i]);
+		
+		do{
+			enterNVDT(&newNVDT[i]);
+			if(checkNVDT(newNVDT[i].maDT, newNVDT[i].maSoNV)){
+				printf("\nNhiem vu de tai da ton tai trong danh sach !");
+				printf("\nVui long nhap lai !");
+				printf("\nNhiem vu de tai thu %d", i + 1);
+			}
+			if(!checkNVDT_DT(newNVDT[i].maDT)){
+				printf("\nMa de tai khong ton tai trong danh sach \"De tai\" !");
+				printf("\nVui long nhap lai !");
+				printf("\nNhiem vu de tai thu %d", i + 1);
+			}
+			if(!checkNVDT_NV(newNVDT[i].maSoNV)){
+				printf("\nNhan vien khong ton tai trong danh sach \"Nhan vien\" !");
+				printf("\nVui long nhap lai !");
+				printf("\nNhiem vu de tai thu %d", i + 1);
+			}
+		}while(checkNVDT(newNVDT[i].maDT, newNVDT[i].maSoNV)&& (!checkNVDT_DT(newNVDT[i].maDT)) && (!checkNVDT_NV(newNVDT[i].maSoNV)));
+		
         NVDTNode *node = createNVDTNode(newNVDT[i]);
         addTailNVDTList(NVDT_List, node);
     }
