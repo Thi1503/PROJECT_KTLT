@@ -413,6 +413,73 @@ int main(){
 								break;
 							}
 						}
+						
+						while(run1 && (unsigned int)flag%10 == 3){
+							c1 = getch();
+							if (c1 == -32){
+								c1 = getch();
+							}
+							switch(c1){
+								case 72:
+									flag1 -= 1;
+									system("cls || clear");
+									menu1(flag1);
+								break;
+								
+								case 80:
+									flag1 += 1;
+									system("cls || clear");
+									menu1(flag1);
+								break;
+								
+								case 77:
+								case 13:
+									switch((unsigned int)flag1%4){
+										case 0:
+											updateNVList(&NV_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 1:
+										    updateDTList(&DT_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 2:
+											updateNVDTList(&NVDT_List);
+											c3 = getch();
+											if(c3 = 13){
+												system("cls || clear");
+												menu1(flag1 = 0);
+											}
+										break;
+										
+										case 3:
+											system("cls || clear");
+											run1 = 0;
+											flag = 0;
+											menuMain(flag);
+										break;
+									}
+									
+								break;
+								case 75:
+								case 8:
+									run1 = 0;
+									system("cls || clear");
+									flag = 0;
+									menuMain(flag);
+								break;
+							}
+						}
 					break;
 					
 					case 4:
@@ -432,17 +499,24 @@ int main(){
 					break;
 					
 					case 8:
-						// luu du lieu;
+						exportFileNV(NV_List);
+						exportFileDT(DT_List);
+						exportFileNVDT(NVDT_List);
+						printf("Cap nhat thanh cong !");
+						c3 = getch();
+						if(c3 = 13){
+							system("cls || clear");
+							flag = 0;
+							menuMain(flag);
+						}				
 					break;
 					
 					case 9:
-						// thoat chuong trinh
 						run =0;
 					break;
 				}	
 			break;
 			
-			case 75:
 			case 27:
 			case 8:
 				run = 0;
