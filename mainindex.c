@@ -71,15 +71,17 @@ struct NVDTList{
 	NVDTNode* tail;
 };
 typedef struct NVDTList NVDTList;
-NVList NV_List;
-DTList DT_List;
-NVDTList NVDT_List;
+
 int checkNV_NVDT(int maSoNV);
 void removeNVByMaSoNV(NVList* NV_List);
  void removeDTByMaDT(DTList* DT_List);
  int checkDT_NVDT(char maDT[]);
 void removeNVDTByMaDTAndMaSoNV(NVDTList* NVDT_List);
 // Khai bao cac ham cua nhan vien
+
+void requestThree();
+
+
 void deleteNewline(char x[]);             // xoa xuong dong 
 int countNV(NVList NV_List);               // dem so node
 void createNVList(NVList* NV_List);        // tao danh sach lien ket nhan vien
@@ -152,12 +154,17 @@ NVDTList NVDT_List;
 
 
 int main(){
-
-	int flag, flag1, flag2, flag3, flag4;
-	char c, c1, c3;
-	menuMain(flag);
+	
+	importFileNV(&NV_List);
+	importFileDT(&DT_List);
+	importFileNVDT(&NVDT_List);
+	int flag, flag1;
 	int run = 1;
 	int run1, run2;
+	char c, c1, c2;
+	
+	menuMain(flag);
+
 	while(run){
 		c = getch();
 		if(c == -32){
@@ -211,8 +218,8 @@ int main(){
 									switch((unsigned int)flag1%4){
 										case 0:
 											printNVList(NV_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -220,8 +227,8 @@ int main(){
 										
 										case 1:
 											printDTList(DT_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -229,8 +236,8 @@ int main(){
 										
 										case 2:
 											printNVDTList(NVDT_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -277,8 +284,8 @@ int main(){
 									switch((unsigned int)flag1%4){
 										case 0:
 											addNVToList(&NV_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -286,8 +293,8 @@ int main(){
 										
 										case 1:
 											addDTToList(&DT_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -295,8 +302,8 @@ int main(){
 										
 										case 2:
 											addNVDTToList(&NVDT_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -344,8 +351,8 @@ int main(){
 									switch((unsigned int)flag1%4){
 										case 0:
 											removeNVByMaSoNV(&NV_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -353,8 +360,8 @@ int main(){
 										
 										case 1:
 											removeDTByMaDT(&DT_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -362,8 +369,8 @@ int main(){
 										
 										case 2:
 											removeNVDTByMaDTAndMaSoNV(&NVDT_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -411,8 +418,8 @@ int main(){
 									switch((unsigned int)flag1%4){
 										case 0:
 											updateNVList(&NV_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -420,8 +427,8 @@ int main(){
 
 										case 1:
 										    updateDTList(&DT_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -429,8 +436,8 @@ int main(){
 
 										case 2:
 											updateNVDTList(&NVDT_List);
-											c3 = getch();
-											if(c3 = 13){
+											c2 = getch();
+											if(c2 = 13){
 												system("cls || clear");
 												menu1(flag1 = 0);
 											}
@@ -457,11 +464,18 @@ int main(){
 					break;
 
 					case 4:
-						//yeu cau 3;
+					
+						requestThree();
+						c2 = getch();
+						if(c2 = 13){
+							system("cls || clear");
+							flag = 0;
+							menuMain(flag);
+						}
 					break;
 					
 					case 5:
-						//yeu cau 4;
+						
 					break;
 					
 					case 6:
@@ -478,8 +492,8 @@ int main(){
 						exportFileDT(DT_List);
 						exportFileNVDT(NVDT_List);
 						printf("Cap nhat thanh cong !");
-						c3 = getch();
-						if(c3 = 13){
+						c2 = getch();
+						if(c2 = 13){
 							system("cls || clear");
 							flag = 0;
 							menuMain(flag);
@@ -500,6 +514,7 @@ int main(){
 			break;
 		}	
 	}
+
 }
 	
 void menuMain(int choose){
@@ -540,6 +555,34 @@ void menu1(int choose){
 	}
 	printf("|-----------------------------------------|\n");
 }
+
+void requestThree(){
+	NVDTNode* node = NVDT_List.head;
+	int count = 0 ;
+	int maSoNV;
+	printf("\nNhap vao ma so nhan vien: ");
+	scanf("%d", &maSoNV);
+	printf("\nDanh sach de tai nhan vien %d tham gia cung nhiem vu la: ", maSoNV);
+	printf("\n|%20s  \t|%20s|", "Ma de tai", "Vai tro");
+	while(node != NULL){
+		if(node->data.maSoNV == maSoNV){
+			
+			printf("\n|%20s  \t|%20s|", node->data.maDT, node->data.vaiTro);
+			count++;
+		}
+		node = node->next;
+	}
+	if(count < 1){
+		printf("\nNhan vien khong tham gia de tai nào hoac khong co trong danh sach \"Nhan vien\"!");
+	}
+		
+}
+
+
+
+
+
+
 // xoa xuong dong
 void deleteNewline(char* str) {
     size_t len = strlen(str);
