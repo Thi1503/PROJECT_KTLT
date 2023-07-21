@@ -145,7 +145,14 @@ void writeToTailNVDTFile(NVDT newNVDT);
 void exportFileNVDT(NVDTList NVDT_List);
 void importFileNVDT(NVDTList* NVDT_List); 
 void menuMain(int choose);
+
+NVList NV_List;
+DTList DT_List;
+NVDTList NVDT_List;
+
+
 int main(){
+
 	int flag, flag1, flag2, flag3, flag4;
 	char c, c1, c3;
 	menuMain(flag);
@@ -566,12 +573,12 @@ NVNode* createNVNode(NV newNV) {
 }
 // nhap vao ngay sinh 
 void enterNgaySinh(NgaySinh* ngay_Sinh) {
-    printf("\nNgay sinh: ");
-    scanf("%d", &ngay_Sinh->ngay);
-    printf("Thang sinh: ");
-    scanf("%d", &ngay_Sinh->thang);
-    printf("Nam sinh: ");
-    scanf("%d", &ngay_Sinh->nam);
+	char ngaySinh[30];
+	printf("Ngay sinh: ");
+	fgets(ngaySinh, sizeof(ngaySinh),stdin);
+	deleteNewline(ngaySinh);
+	int result = sscanf(ngaySinh, "%d/%d/%d",&ngay_Sinh->ngay,&ngay_Sinh->thang,&ngay_Sinh->nam);
+	
 }
 int checkNV(int maSoNV) {
     NVNode* node = NV_List.head;
@@ -1424,21 +1431,26 @@ void addNVDTToList(NVDTList* NVDT_List) {
 		do{
 			enterNVDT(&newNVDT[i]);
 			if(checkNVDT(newNVDT[i].maDT, newNVDT[i].maSoNV)){
-				printf("\nNhiem vu de tai da ton tai trong danh sach !");
+				printf("\nNhiem vu de tai da co trong danh sach !");
 				printf("\nVui long nhap lai !");
 				printf("\nNhiem vu de tai thu %d", i + 1);
 			}
-			if(!checkNVDT_DT(newNVDT[i].maDT)){
-				printf("\nMa de tai khong ton tai trong danh sach \"De tai\" !");
+			else if(!checkNVDT_NV(newNVDT[i].maSoNV) && !checkNVDT_DT(newNVDT[i].maDT)){
+				printf("\nMa so nhan vien va Ma de tai khong co trong danh sach !");
 				printf("\nVui long nhap lai !");
 				printf("\nNhiem vu de tai thu %d", i + 1);
 			}
-			if(!checkNVDT_NV(newNVDT[i].maSoNV)){
-				printf("\nNhan vien khong ton tai trong danh sach \"Nhan vien\" !");
+			else if (!checkNVDT_NV(newNVDT[i].maSoNV)){
+				printf("\nMa so nhan vien khong co trong danh sach \"Nhan vien\" !");
 				printf("\nVui long nhap lai !");
 				printf("\nNhiem vu de tai thu %d", i + 1);
 			}
-		}while(checkNVDT(newNVDT[i].maDT, newNVDT[i].maSoNV)&& (!checkNVDT_DT(newNVDT[i].maDT)) && (!checkNVDT_NV(newNVDT[i].maSoNV)));
+			else if(!checkNVDT_DT(newNVDT[i].maDT)){
+				printf("\nMa de tai khong co trong danh sach \"De tai\" !");
+				printf("\nVui long nhap lai !");
+				printf("\nNhiem vu de tai thu %d", i + 1);
+			}
+		}while(checkNVDT(newNVDT[i].maDT, newNVDT[i].maSoNV) || (!checkNVDT_NV(newNVDT[i].maSoNV)) || (!checkNVDT_DT(newNVDT[i].maDT)) || (!checkNVDT_NV(newNVDT[i].maSoNV) && !checkNVDT_DT(newNVDT[i].maDT)));
 		
         NVDTNode *node = createNVDTNode(newNVDT[i]);
         addTailNVDTList(NVDT_List, node);
