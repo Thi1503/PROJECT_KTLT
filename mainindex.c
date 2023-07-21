@@ -79,8 +79,8 @@ void removeNVByMaSoNV(NVList* NV_List);
 void removeNVDTByMaDTAndMaSoNV(NVDTList* NVDT_List);
 // Khai bao cac ham cua nhan vien
 
-void requestThree();
-
+void requestThree(NVDT_List);
+void sortDeTai(DTList* DT_List);
 
 void deleteNewline(char x[]);             // xoa xuong dong 
 int countNV(NVList NV_List);               // dem so node
@@ -154,6 +154,9 @@ NVDTList NVDT_List;
 
 
 int main(){
+	
+	
+
 	
 	importFileNV(&NV_List);
 	importFileDT(&DT_List);
@@ -465,7 +468,7 @@ int main(){
 
 					case 4:
 					
-						requestThree();
+						requestThree(NVDT_List);
 						c2 = getch();
 						if(c2 = 13){
 							system("cls || clear");
@@ -475,7 +478,14 @@ int main(){
 					break;
 					
 					case 5:
-						
+						sortDeTai(&DT_List);
+						printDTList(DT_List);
+						c2 = getch();
+						if(c2 = 13){
+							system("cls || clear");
+							flag = 0;
+							menuMain(flag);
+						}
 					break;
 					
 					case 6:
@@ -483,7 +493,13 @@ int main(){
 					break;
 					
 					case 7:
-						//yeu cau 6;
+						totalCost(DT_List);
+						c2 = getch();
+						if(c2 = 13){
+							system("cls || clear");
+							flag = 0;
+							menuMain(flag);
+						}	
 					break;
 
 					case 8:
@@ -556,7 +572,7 @@ void menu1(int choose){
 	printf("|-----------------------------------------|\n");
 }
 
-void requestThree(){
+void requestThree(NVDTList NVDT_List){
 	NVDTNode* node = NVDT_List.head;
 	int count = 0 ;
 	int maSoNV;
@@ -578,6 +594,49 @@ void requestThree(){
 		
 }
 
+void sortDeTai(DTList* DT_List){
+	DTNode* node1 = DT_List->head;
+	DTNode* node2;
+	DT temp;
+	for(node1; node1 != NULL ; node1 = node1->next){
+		for(node2 = node1->next; node2 != NULL; node2 = node2->next){
+			if(node1->data.namBatDau > node2->data.namBatDau){
+				temp = node1->data;
+				node1->data = node2->data;
+				node2->data = temp;
+			}
+		}
+	}
+}
+
+void totalCost(DTList DT_List){
+	DTNode* node = DT_List.head;
+	long int sum = 0;
+	int namBatDau;
+	printf("\nNhap vao nam bat dau: ");
+	scanf("%d", &namBatDau);
+	if(node != NULL){
+		while(node!=NULL){
+			if(node->data.namBatDau == namBatDau){
+				sum = sum + node->data.kinhPhi;
+			}
+			node = node->next;
+		}
+		printf("\nTong kinh phi cua nam %d la: %ld VND",namBatDau, sum);
+	}
+	else{
+		printf("\nDanh sach \"De tai\" trong !");
+	}
+}
+
+
+//void requestFive(){
+//	DTNode* nodeDT = searchDTNodeByMaDeTai(DT_List);
+//	if(nodeDT!=NULL){
+//		// in de tai ra
+//		while()
+//	}
+//}
 
 
 
@@ -821,9 +880,9 @@ int updateNVList(NVList* NV_List) {
 void printNVList(NVList NV_List) {
     if (NV_List.head != NULL) {
         NVNode* node = NV_List.head;
-        printf("\n |%20s \t |%30s \t |%30s \t |%20s \t |\t%26s |", "Ma so nhan vien", "Ho ten dem", "Ten nhan vien", "Gioi tinh", "Ngay sinh");
+        printf("\n |%20s \t |%30s \t |%30s \t |%20s \t |\t %26s \t|", "Ma so nhan vien", "Ho ten dem", "Ten nhan vien", "Gioi tinh", "Ngay sinh");
         while (node != NULL) {
-            printf("\n |%20d \t |%30s \t |%30s \t |%20s \t |\t%20d/%d/%d|", node->data.maSoNV, node->data.hoDem,
+            printf("\n |%20d \t |%30s \t |%30s \t |%20s \t |\t%20d/%02d/%d\t|", node->data.maSoNV, node->data.hoDem,
                 node->data.tenNV, node->data.gioiTinh, node->data.ngaySinh.ngay, node->data.ngaySinh.thang, node->data.ngaySinh.nam);
             node = node->next;
         }
