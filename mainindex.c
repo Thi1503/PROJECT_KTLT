@@ -81,6 +81,8 @@ void removeNVDTByMaDTAndMaSoNV(NVDTList* NVDT_List);
 
 void requestThree(NVDT_List);
 void sortDeTai(DTList* DT_List);
+void requestFive();
+
 
 void deleteNewline(char x[]);             // xoa xuong dong 
 int countNV(NVList NV_List);               // dem so node
@@ -155,13 +157,11 @@ NVDTList NVDT_List;
 
 int main(){
 	
-	
 
-	
 	importFileNV(&NV_List);
 	importFileDT(&DT_List);
 	importFileNVDT(&NVDT_List);
-	int flag, flag1;
+	int flag = 0, flag1;
 	int run = 1;
 	int run1, run2;
 	char c, c1, c2;
@@ -489,7 +489,13 @@ int main(){
 					break;
 					
 					case 6:
-						//yeu cau 5;
+						requestFive();
+						c2 = getch();
+						if(c2 = 13){
+							system("cls || clear");
+							flag = 0;
+							menuMain(flag);
+						}	
 					break;
 					
 					case 7:
@@ -557,6 +563,7 @@ void menuMain(int choose){
 }
 void menu1(int choose){
 	int i;
+	printf("\n");
 	printf("|-----------Hien thi du lieu--------------|\n");
 	char menuTitle[4][50] = {
 		"|  | 1. Nhan vien.                        |\n",
@@ -630,15 +637,70 @@ void totalCost(DTList DT_List){
 }
 
 
-//void requestFive(){
-//	DTNode* nodeDT = searchDTNodeByMaDeTai(DT_List);
-//	if(nodeDT!=NULL){
-//		// in de tai ra
-//		while()
-//	}
-//}
+void requestFive() {
+    DTNode* deTai = searchDTNodeByMaDeTai(DT_List);
+    NVDTNode* temp = NVDT_List.head;
+    NVNode* node = NV_List.head;
+    int i = 0;
+    int maThuKy, maChuNhiem;
+    int size = countNV(NV_List);
+    int* maThanhVien = (int*)malloc(size * sizeof(int));
+    char tenChuNhiem[100] = "";
+    char tenThuKy[100] = "";
+    char tenThanhVien[100][100] = {""}; // Initialize the 2D array with empty strings
 
+    printDTNode(*deTai);
 
+    while (temp != NULL) {
+        if (strcmp(temp->data.maDT, deTai->data.maDT) == 0) {
+            if (strcmp(temp->data.vaiTro, "Chu nhiem") == 0) {
+                maChuNhiem = temp->data.maSoNV;
+            } else if (strcmp(temp->data.vaiTro, "Thu ky") == 0) {
+                maThuKy = temp->data.maSoNV;
+            } else {
+                maThanhVien[i] = temp->data.maSoNV;
+                i++;
+            }
+        }
+        temp = temp->next;
+    }
+
+    while (node != NULL) {
+        if (node->data.maSoNV == maChuNhiem) {
+            strcat(tenChuNhiem, node->data.hoDem);
+            strcat(tenChuNhiem, " ");
+            strcat(tenChuNhiem, node->data.tenNV);
+            printf("\n\nTen Chu tich : %s", tenChuNhiem);
+        }
+        if (node->data.maSoNV == maThuKy) {
+            strcat(tenThuKy, node->data.hoDem);
+            strcat(tenThuKy, " ");
+            strcat(tenThuKy, node->data.tenNV);
+            printf("\nTen thu ky : %s", tenThuKy);
+        }
+        node = node->next;
+    }
+
+    node = NV_List.head;
+    printf("\n\nDanh sach ten nhan vien: \n");
+    printf("|%10s\t|%30s\t|\n", "STT", "Ten nhan vien");
+
+    for (i = 0; i < size; i++) {
+        node = NV_List.head;
+        while (node != NULL) {
+            if (node->data.maSoNV == maThanhVien[i]) {
+                strcpy(tenThanhVien[i], ""); // Clear the content before appending new name
+                strcat(tenThanhVien[i], node->data.hoDem);
+                strcat(tenThanhVien[i], " ");
+                strcat(tenThanhVien[i], node->data.tenNV);
+                printf("|%10d\t|%30s\t|\n", i + 1, tenThanhVien[i]);
+            }
+            node = node->next;
+        }
+    }
+
+    free(maThanhVien); // Gi?i phóng b? nh? dã c?p phát
+}
 
 
 
