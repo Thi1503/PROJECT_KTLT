@@ -3,7 +3,7 @@
 #include <string.h>
 // Khai bao ham va cau truc
 // Cau truc cua ngay sinh
-int size;
+//int size;
 struct NgaySinh {
     int ngay;
     int thang;
