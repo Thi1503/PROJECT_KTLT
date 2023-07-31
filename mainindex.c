@@ -1064,14 +1064,14 @@ void enterDT(DT* newDT) {
     printf("\nMa de tai: ");
     fgets(newDT->maDT, sizeof(newDT->maDT), stdin);
     deleteNewline(newDT->maDT);
-    printf("\nTen De Tai: ");
+    printf("Ten De Tai: ");
     fgets(newDT->tenDT, sizeof(newDT->tenDT), stdin);
     deleteNewline(newDT->tenDT);
-    printf("\nNam bat dau: ");
+    printf("Nam bat dau: ");
     scanf("%d", &newDT->namBatDau);
-    printf("\nNam ket thuc: ");
+    printf("Nam ket thuc: ");
     scanf("%d", &newDT->namKetThuc);
-    printf("\nKinh phi de tai: ");
+    printf("Kinh phi de tai: ");
     scanf("%ld", &newDT->kinhPhi);
 }
 void addHeadDTList(DTList* DT_List, DTNode* node){
@@ -1375,10 +1375,10 @@ void enterNVDT(NVDT* newNVDT) {
     printf("\nMa de tai: ");
     fgets(newNVDT->maDT, sizeof(newNVDT->maDT),stdin);
     deleteNewline(newNVDT->maDT);
-   	printf("\nMa so nhan vien: ");
+   	printf("Ma so nhan vien: ");
    	scanf("%d", &newNVDT->maSoNV);
    	getchar();
-   	printf("\nVai tro: ");
+   	printf("Vai tro: ");
    	fgets(newNVDT->vaiTro, sizeof(newNVDT->vaiTro), stdin);
    	deleteNewline(newNVDT->vaiTro);
 }
