@@ -142,7 +142,7 @@ int removeTailNVDTList(NVDTList* NVDT_List);
 int removeAtPositionNVDTList(NVDTList* NVDT_List, int position);
 NVDTNode* getNVDTNode(NVDTList* NVDT_List, int position);
 NVDTNode* searchNVDTNodeByMaDeTaiAndMaSoNV(NVDTList NVDT_List);
-int updateNVDTList(NVDTList *NVDT_List);
+void updateNVDTList(NVDTList *NVDT_List);
 void printNVDTList(NVDTList NVDT_List);
 void printNVDTNode(NVDTNode node);
 void writeToTailNVDTFile(NVDT newNVDT);
@@ -156,15 +156,15 @@ NVDTList NVDT_List;
 
 
 int main(){
-	
-
-	importFileNV(&NV_List);
-	importFileDT(&DT_List);
-	importFileNVDT(&NVDT_List);
 	int flag = 0, flag1;
 	int run = 1;
 	int run1, run2;
 	char c, c1, c2;
+
+	importFileNV(&NV_List);
+	importFileDT(&DT_List);
+	importFileNVDT(&NVDT_List);
+	
 	
 	menuMain(flag);
 
@@ -676,7 +676,7 @@ void requestFive() {
             strcat(tenThuKy, node->data.hoDem);
             strcat(tenThuKy, " ");
             strcat(tenThuKy, node->data.tenNV);
-            printf("\nTen thu ky : %s", tenThuKy);
+            printf("\n\nTen thu ky : %s", tenThuKy);
         }
         node = node->next;
     }
@@ -868,30 +868,45 @@ int checkNV_NVDT(int maSoNV) {
     }
     return 0;
 }
-void removeNVByMaSoNV(NVList* NV_List){
-    NVNode* nodeToDelete = searchNVNodeByMaSoNV(*NV_List);
-    if (nodeToDelete != NULL) {
-        if(!checkNV_NVDT(nodeToDelete->data.maSoNV)){
-        	if (nodeToDelete == NV_List->head) {
-            	NV_List->head = nodeToDelete->next;
-        	} 
-			else {
-            	NVNode* prevNode = NV_List->head;
-            	while (prevNode != NULL && prevNode->next != nodeToDelete) {
-                	prevNode = prevNode->next;
-        		}
-            	if (prevNode != NULL) {
-               		prevNode->next = nodeToDelete->next;
-            	}
-        	}
+
+void removeNVByMaSoNV(NVList* NV_List)
+{
+	NVNode* nodeToDelete = searchNVNodeByMaSoNV(*NV_List);
+	if (nodeToDelete != NULL)
+	{
+		// Ensure that the employee is in the NV_List
+		int maSoNV = nodeToDelete->data.maSoNV;
+		if (checkNV_NVDT(maSoNV)){
+			printf("\nKhong the xoa vi nhan vien co nhiem vu de tai lien quan!");
 		}
-		else{
-			printf("\Khong the xoa vi nhan vien co trong danh sach \"Nhan vien de tai\"");
+		else
+		{
+			if (nodeToDelete == NV_List->head)
+			{
+				NV_List->head = nodeToDelete->next;
+			}
+			else
+			{
+				NVNode* prevNode = NV_List->head;
+				while (prevNode != NULL && prevNode->next != nodeToDelete)
+				{
+					prevNode = prevNode->next;
+				}
+				if (prevNode != NULL)
+				{
+					prevNode->next = nodeToDelete->next;
+				}
+			}
+			free(nodeToDelete);
+			printf("\nXoa thanh cong !");
 		}
+	
 	}
-    
-    free(nodeToDelete);
+	else{
+		printf("\nKhong the xoa vi nhan vien khong có trong danh sach !");
+	}
 }
+
 NVNode* getNVNode(NVList* NV_List, int position){
 	NVNode* node = NV_List->head;
 	int i = 0;
@@ -1175,32 +1190,44 @@ int removeTailDTList(DTList* DT_List){
     }
     return 0;
 }
-void removeDTByMaDT(DTList* DT_List){
-    DTNode* nodeToDelete = searchDTNodeByMaDeTai(*DT_List);
-    if (nodeToDelete != NULL) {
-        if(!checkDT_NVDT(nodeToDelete->data.maDT)){
-        	if (nodeToDelete == DT_List->head) {
-            	DT_List->head = nodeToDelete->next;
-        	} 
-			else {
-            	DTNode* prevNode = DT_List->head;
-            	while (prevNode != NULL && prevNode->next != nodeToDelete) {
-                	prevNode = prevNode->next;
-        		}
-            	if (prevNode != NULL) {
-               		prevNode->next = nodeToDelete->next;
-            	}
-        	}
+
+ void removeDTByMaDT(DTList* DT_List)
+{
+	DTNode* nodeToDelete = searchDTNodeByMaDeTai(*DT_List);
+	if (nodeToDelete != NULL)
+	{
+		// Check if there are any associated NVDT entries for the given DT
+		if (checkDT_NVDT(nodeToDelete->data.maDT))
+		{
+			printf("\nKhong the xoa vi de tai co nhiem vu de tai lien quan!");
 		}
-		else{
-			printf("\Khong the xoa vi de tai co trong danh sach \"Nhan vien de tai\"");
+		else
+		{
+			if (nodeToDelete == DT_List->head)
+			{
+				DT_List->head = nodeToDelete->next;
+			}
+			else
+			{
+				DTNode* prevNode = DT_List->head;
+				while (prevNode != NULL && prevNode->next != nodeToDelete)
+				{
+					prevNode = prevNode->next;
+				}
+				if (prevNode != NULL)
+				{
+					prevNode->next = nodeToDelete->next;
+				}
+			}
+			printf("\nXoa thanh cong !");
+			free(nodeToDelete);
 		}
 	}
-    
-    free(nodeToDelete);
+	else
+	{
+		printf("\nKhong the xoa vi de tai khong co trong danh sach!");
+	}
 }
- 
- 
  
  
  
@@ -1491,9 +1518,14 @@ int removeTailNVDTList(NVDTList* NVDT_List){
                		prevNode->next = nodeToDelete->next;
             	}
 			}
+		printf("\nXoa thanh cong !");
+			free(nodeToDelete);
 	}
     
-    free(nodeToDelete);
+    else
+	{
+		printf("\nKhong the xoa vi nhiem vu de tai khong co trong danh sach!");
+	}
 }
  
  
@@ -1534,16 +1566,23 @@ NVDTNode* searchNVDTNodeByMaDeTaiAndMaSoNV(NVDTList NVDT_List) {
     return NULL;
 }
  
-int updateNVDTList(NVDTList* NVDT_List){
-	NVDTNode* nodeUpdate = searchNVDTNodeByMaDeTaiAndMaSoNV(*NVDT_List);
-	if(nodeUpdate != NULL){
-		printf("\nNhap vao cac chinh sua cua nhiem vu de tai co ma de tai %s va ma so nhan vien %s", nodeUpdate->data.maDT, nodeUpdate->data.maSoNV);
+void updateNVDTList(NVDTList *NVDT_List)
+{
+	NVDTNode *nodeUpdate = searchNVDTNodeByMaDeTaiAndMaSoNV(*NVDT_List);
+
+	if (nodeUpdate != NULL)
+	{
+		printf("\nNhap vao cac chinh sua cua nhiem vu de tai co ma de tai %s va ma so nhan vien %d", nodeUpdate->data.maDT, nodeUpdate->data.maSoNV);
 		printf("\nVai tro: ");
-	   	fgets(nodeUpdate->data.vaiTro, sizeof(nodeUpdate->data.vaiTro), stdin);
-	   	deleteNewline(nodeUpdate->data.vaiTro);
-	   	return 1;
+		getchar();
+		fgets(nodeUpdate->data.vaiTro, sizeof(nodeUpdate->data.vaiTro), stdin);
+		deleteNewline(nodeUpdate->data.vaiTro);
+		printf("\nCap nhat thanh cong !");
 	}
-	return 0;
+	else
+	{
+		printf("\nCap nhat that bai !");
+	}
 }
 void printNVDTList(NVDTList NVDT_List){
 	if (NVDT_List.head != NULL){
