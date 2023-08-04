@@ -259,7 +259,7 @@ int main()
 						switch ((unsigned int)flag1 % 4)
 						{
 						case 0:
-							fprintf(file, "Yeu cau 2 : Hien thi du lieu danh sach \"Nhan vien\"\n");
+							fprintf(file, "Yeu cau 1 : Hien thi du lieu danh sach \"Nhan vien\"\n");
 							printNVList(NV_List);
 							c2 = getch();
 							if (c2 = 13)
@@ -270,7 +270,7 @@ int main()
 							break;
 
 						case 1:
-							fprintf(file, "Yeu cau 2 : Hien thi du lieu danh sach \"De tai\"\n");
+							fprintf(file, "Yeu cau 1 : Hien thi du lieu danh sach \"De tai\"\n");
 							printDTList(DT_List);
 							c2 = getch();
 							if (c2 = 13)
@@ -281,7 +281,7 @@ int main()
 							break;
 
 						case 2:
-							fprintf(file, "Yeu cau 2 : Hien thi du lieu danh sach \"Nhiem vu de tai\"\n");
+							fprintf(file, "Yeu cau 1 : Hien thi du lieu danh sach \"Nhiem vu de tai\"\n");
 							printNVDTList(NVDT_List);
 							c2 = getch();
 							if (c2 = 13)
@@ -489,6 +489,7 @@ int main()
 						switch ((unsigned int)flag1 % 4)
 						{
 						case 0:
+							fprintf(file, "Yeu cau 2 : Sua chua du lieu danh sach \"Nhan vien\"\n");
 							updateNVList(&NV_List);
 							c2 = getch();
 							if (c2 = 13)
@@ -499,7 +500,7 @@ int main()
 							break;
 
 						case 1:
-							fprintf(file, "Yeu cau 2 : Sua chua du lieu danh sach \"Nhan vien\"\n");
+							fprintf(file, "Yeu cau 2 : Sua chua du lieu danh sach \"De tai\"\n");
 							updateDTList(&DT_List);
 							c2 = getch();
 							if (c2 = 13)
@@ -510,7 +511,7 @@ int main()
 							break;
 
 						case 2:
-							fprintf(file, "Yeu cau 2 : Sua chua du lieu danh sach \"De tai\"\n");
+							fprintf(file, "Yeu cau 2 : Sua chua du lieu danh sach \"Nhiem vu de tai\"\n");
 							updateNVDTList(&NVDT_List);
 							c2 = getch();
 							if (c2 = 13)
@@ -521,7 +522,7 @@ int main()
 							break;
 
 						case 3:
-							fprintf(file, "Yeu cau 2 : Sua chua du lieu danh sach \"Nhiem vu de tai\"\n");
+							
 							system("cls || clear");
 							run1 = 0;
 							flag = 0;
@@ -1783,8 +1784,8 @@ void requestFive()
 				strcat(tenChuNhiem, node->data.hoDem);
 				strcat(tenChuNhiem, " ");
 				strcat(tenChuNhiem, node->data.tenNV);
-				printf("\n\nTen Chu tich : %s", tenChuNhiem);
-				fprintf(file, "\n\nTen Chu tich : %s", tenChuNhiem);
+				printf("\n\nTen chu nhiem : %s", tenChuNhiem);
+				fprintf(file, "\n\nTen chu nhiem : %s", tenChuNhiem);
 			}
 			if (node->data.maSoNV == maThuKy)
 			{

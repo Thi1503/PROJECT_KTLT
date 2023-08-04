@@ -1,0 +1,469 @@
+|-------------------------------------MENU----------------------------------------|
+|->| 1. Hien thi du lieu.                                                         |
+|  | 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|  | 1. Hien thi du lieu.                                                         |
+|->| 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Bo sung du lieu danh sach "Nhan vien"
+
+Nhap vao so luong nhan vien: 2
+
+Nhan vien thu 1
+Ma so nhan vien: 236
+Ho ten dem: Tran Duc
+Ten nhan vien: Anh
+Gioi tinh (Nam/Nu): Nam
+Ngay sinh (dd/mm/yyyy): 13/0212/2003 
+
+Nhan vien thu 2
+Ma so nhan vien: 211
+Ho ten dem: Nguyen Thai
+Ten nhan vien: Duong
+Gioi tinh (Nam/Nu): Nam
+Ngay sinh (dd/mm/yyyy): 02/023/2003 
+
+Ma so nhan vien da co trong danh sach !
+Vui long nhap lai !
+
+Nhan vien thu 2
+Ma so nhan vien: 237
+Ho ten dem: Nguyen Thai
+Ten nhan vien: Duong
+Gioi tinh (Nam/Nu): Nam
+Ngay sinh (dd/mm/yyyy): 02/023/2003 
+
+Bo sung thanh cong !
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Bo sung du lieu danh sach "De tai"
+
+Nhap vao so luong de tai: 2
+
+De tai thu 1
+Ma de tai: DT1503
+Ten De Tai: Phat trien ung dung am nhac
+Nam bat dau: 2023
+Nam ket thuc: 2026
+Kinh phi de tai (VND): 300000000
+
+De tai thu 2
+Ma de tai: DT001
+Ten De Tai: Tich hop AI trong day chuyen san xuat
+Nam bat dau: 2022
+Nam ket thuc: 2025
+Kinh phi de tai (VND): 450000000
+
+Ma de tai da co trong danh sach !
+Vui long nhap lai !
+
+De tai thu 2
+Ma de tai: DT2701
+Ten De Tai: Tich hop AI trong day chuyen san xuat
+Nam bat dau: 2022
+Nam ket thuc: 2025
+Kinh phi de tai (VND): 450000000
+
+Bo sung thanh cong !
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|->| 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Bo sung du lieu danh sach "Nhiem vu de tai"
+
+Nhap vao so luong nhiem vu de tai: 1
+
+Nhiem vu de tai thu 1
+Ma de tai: DT12345
+Ma so nhan vien: 236
+Vai tro: Chu nhiem
+
+Ma de tai khong co trong danh sach "De tai" !
+Vui long nhap lai !
+Nhiem vu de tai thu 1
+Ma de tai: DT1503
+Ma so nhan vien: 20216888
+Vai tro: Chu nhiem
+
+Ma so nhan vien khong co trong danh sach "Nhan vien" !
+Vui long nhap lai !
+Nhiem vu de tai thu 1
+Ma de tai: DT12345
+Ma so nhan vien: 20216888
+Vai tro: Chu nhiem
+
+Ma so nhan vien va Ma de tai khong co trong danh sach !
+Vui long nhap lai !
+Nhiem vu de tai thu 1
+Ma de tai: DT1503
+Ma so nhan vien: 236
+Vai tro: Chu nhiem
+
+Bo sung thanh cong !
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|->| 1. Hien thi du lieu.                                                         |
+|  | 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|  | 1. Hien thi du lieu.                                                         |
+|->| 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|  | 1. Hien thi du lieu.                                                         |
+|  | 2. Bo sung du lieu.                                                          |
+|->| 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Xoa du lieu danh sach "Nhan vien"
+
+Nhap vao ma so nhan vien: 236
+Tim thay nhan vien trong danh sach!
+Khong the xoa vi nhan vien co nhiem vu de tai lien quan!
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Xoa du lieu danh sach "Nhan vien"
+
+Nhap vao ma so nhan vien: 237
+Tim thay nhan vien trong danh sach!
+Xoa thanh cong !
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Xoa du lieu danh sach "De tai"
+
+Nhap vao ma de tai: DT1503
+Tim thay de tai trong danh sach!
+Khong the xoa vi de tai co nhiem vu de tai lien quan!
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Xoa du lieu danh sach "De tai"
+
+Nhap vao ma de tai: DT2701
+Tim thay de tai trong danh sach!
+Xoa thanh cong !
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|->| 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Xoa du lieu danh sach "Nhiem vu de tai"
+
+Nhap vao ma de tai: DT1503
+
+Nhap vao ma so nhan vien: 237
+Nhiem vu de tai khong co trong danh sach!
+Khong the xoa vi nhiem vu de tai khong co trong danh sach!
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|->| 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Xoa du lieu danh sach "Nhiem vu de tai"
+
+Nhap vao ma de tai: DT1503
+
+Nhap vao ma so nhan vien: 236
+Tim thay nhiem vu de tai trong danh sach!
+Xoa thanh cong !
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|->| 1. Hien thi du lieu.                                                         |
+|  | 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|  | 1. Hien thi du lieu.                                                         |
+|->| 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|  | 1. Hien thi du lieu.                                                         |
+|  | 2. Bo sung du lieu.                                                          |
+|->| 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|  | 1. Hien thi du lieu.                                                         |
+|  | 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|->| 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Sua chua du lieu danh sach "Nhan vien"
+
+Nhap vao ma so nhan vien: 211
+Tim thay nhan vien trong danh sach!
+Nhap vao cac chinh sua cua nhan vien co ma so: 211
+Ho ten dem: Le Dinh
+Ten nhan vien: Thi
+Gioi tinh (Nam/Nu): Nam
+Ngay sinh (dd/mm/yyyy): 15/023/2003 
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Sua chua du lieu danh sach "De tai"
+
+Nhap vao ma de tai: DT001
+Tim thay de tai trong danh sach!
+Nhap vao cac chinh sua cua de tai co ma la: DT001
+Ten De Tai: Phat trien ung dung mobile
+Nam bat dau: 2021
+Nam ket thuc: 2025
+Kinh phi de tai: 200000000
+Cap nhat thanh cong !
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|->| 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 2 : Sua chua du lieu danh sach "Nhiem vu de tai"
+
+Nhap vao ma de tai: DT001
+
+Nhap vao ma so nhan vien: 211
+Tim thay nhiem vu de tai trong danh sach!
+Nhap vao cac chinh sua cua nhiem vu de tai co ma de tai DT001 va ma so nhan vien 211
+Vai tro: hanh vien
+Cap nhat thanh cong !
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|->| 1. Hien thi du lieu.                                                         |
+|  | 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|

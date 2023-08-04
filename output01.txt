@@ -1,0 +1,163 @@
+Bat dau chay chuong trinh!
+Yeu cau 1 : Nhap du lieu cho file "NV.bin" thanh cong !
+Yeu cau 1 : Nhap du lieu cho file "DT.bin" thanh cong !
+Yeu cau 1 : Nhap du lieu cho file "NVDT.bin" thanh cong !
+
+|-------------------------------------MENU----------------------------------------|
+|->| 1. Hien thi du lieu.                                                         |
+|  | 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 1 : Hien thi du lieu danh sach "Nhan vien"
+
+ |     Ma so nhan vien 	 |                    Ho ten dem 	 |                 Ten nhan vien 	 |           Gioi tinh 	 |	                  Ngay sinh 	|
+ |                 211 	 |                      Tran Van 	 |                            An 	 |                 Nam 	 |	                  10/04/1990	|
+ |                 212 	 |                    Nguyen Thi 	 |                          Binh 	 |                  Nu 	 |	                  15/08/1988	|
+ |                 213 	 |                       Le Minh 	 |                          Hung 	 |                 Nam 	 |	                  22/11/1995	|
+ |                 214 	 |                      Pham Thi 	 |                         Huong 	 |                  Nu 	 |	                   2/05/1985	|
+ |                 215 	 |                        Vo Van 	 |                          Tuan 	 |                 Nam 	 |	                   8/12/1992	|
+ |                 226 	 |                     Hoang Thi 	 |                           Lam 	 |                  Nu 	 |	                  25/06/1987	|
+ |                 227 	 |                     Dang Minh 	 |                           Hai 	 |                 Nam 	 |	                  12/09/1993	|
+ |                 228 	 |                       Mai Thi 	 |                          Loan 	 |                  Nu 	 |	                   5/07/1991	|
+ |                 231 	 |                       Le Dinh 	 |                           Thi 	 |                 Nam 	 |	                  15/03/2003	|
+ |                 232 	 |                     Ta Thi My 	 |                         Duyen 	 |                  Nu 	 |	                  27/01/2003	|
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 1 : Hien thi du lieu danh sach "De tai"
+
+ |           Ma de tai 	 |                                        Ten de tai 	 |         Nam bat dau 	 |        Nam ket thuc 	 |               Kinh phi de tai |
+ |               DT001 	 |Nghien cuu ve ung dung Tri tue nhan tao trong y te 	 |                2022 	 |                2024 	 |                     300000000 |
+ |               DT002 	 |            Xay dung he thong tu dong hoa san xuat 	 |                2021 	 |                2023 	 |                     500000000 |
+ |               DT003 	 |                   Nghien cuu ve bao mat thong tin 	 |                2023 	 |                2025 	 |                     400000000 |
+ |               DT004 	 |  Ung dung Blockchain trong quan ly chuoi cung ung 	 |                2022 	 |                2024 	 |                     350000000 |
+ |               DT005 	 |           Phat trien ung dung di dong da nen tang 	 |                2021 	 |                2023 	 |                     200000000 |
+ |               DT006 	 |     Nghien cuu tri tue nhan tao trong o to tu lai 	 |                2024 	 |                2026 	 |                     450000000 |
+ |               DT007 	 |              Xay dung he thong dieu khien tu dong 	 |                2024 	 |                2026 	 |                     380000000 |
+ |               DT008 	 |               Nghien cuu phat trien phan mem y te 	 |                2021 	 |                2025 	 |                     800000000 |
+ |               DT009 	 |                  Xay dung he thong mang thong tin 	 |                2023 	 |                2025 	 |                     420000000 |
+ |               DT010 	 |           Xay dung he thong giao thong thong minh 	 |                2022 	 |                2025 	 |                     600000000 |
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|->| 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+Yeu cau 1 : Hien thi du lieu danh sach "Nhiem vu de tai"
+
+|           Ma de tai 	 |     Ma so nhan vien  	|             Vai tro|
+|               DT001 	 |                 211  	|              Thu ky|
+|               DT004 	 |                 214  	|           Chu nhiem|
+|               DT008 	 |                 231  	|           Chu nhiem|
+|               DT001 	 |                 214  	|           Chu nhiem|
+|               DT004 	 |                 211  	|          Thanh vien|
+|               DT008 	 |                 215  	|          Thanh vien|
+|               DT001 	 |                 226  	|          Thanh vien|
+|               DT004 	 |                 227  	|          Thanh vien|
+|               DT008 	 |                 226  	|              Thu ky|
+|               DT004 	 |                 231  	|          Thanh vien|
+|               DT002 	 |                 231  	|           Chu nhiem|
+|               DT003 	 |                 227  	|              Thu ky|
+|               DT005 	 |                 228  	|          Thanh vien|
+|               DT002 	 |                 232  	|              Thu ky|
+|               DT003 	 |                 215  	|          Thanh vien|
+|               DT005 	 |                 227  	|          Thanh vien|
+|               DT005 	 |                 211  	|              Thu ky|
+|               DT002 	 |                 212  	|          Thanh vien|
+|               DT003 	 |                 228  	|           Chu nhiem|
+|               DT005 	 |                 213  	|           Chu nhiem|
+|               DT005 	 |                 215  	|          Thanh vien|
+|               DT007 	 |                 226  	|           Chu nhiem|
+|               DT007 	 |                 214  	|          Thanh vien|
+|               DT009 	 |                 212  	|           Chu nhiem|
+|               DT007 	 |                 227  	|              Thu ky|
+|               DT009 	 |                 214  	|          Thanh vien|
+|               DT009 	 |                 227  	|              Thu ky|
+|               DT006 	 |                 211  	|          Thanh vien|
+|               DT006 	 |                 215  	|              Thu ky|
+|               DT010 	 |                 232  	|           Chu nhiem|
+|               DT006 	 |                 232  	|          Thanh vien|
+|               DT010 	 |                 226  	|          Thanh vien|
+|               DT006 	 |                 228  	|           Chu nhiem|
+|               DT010 	 |                 231  	|              Thu ky|
+
+|-----------Hien thi du lieu--------------|
+|->| 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|->| 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|->| 3. Nhien vu de tai.                  |
+|  | 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-----------Hien thi du lieu--------------|
+|  | 1. Nhan vien.                        |
+|  | 2. De tai.                           |
+|  | 3. Nhien vu de tai.                  |
+|->| 4. Quay lai.                         |
+|-----------------------------------------|
+
+|-------------------------------------MENU----------------------------------------|
+|->| 1. Hien thi du lieu.                                                         |
+|  | 2. Bo sung du lieu.                                                          |
+|  | 3. Xoa du lieu.                                                              |
+|  | 4. Sua chua du lieu.                                                         |
+|  | 5. Nhap vao ma nhan vien, hien thi danh sach de tai tham gia va vai tro.     |
+|  | 6. Hien thi danh sach de tai theo tung nam bat dau.                          |
+|  | 7. Nhap vao de tai, hien thi chi tiet ve de tai.                             |
+|  | 8. Tinh tong kinh phi.                                                       |
+|  | 9. Luu ket qua.                                                              |
+|  | 10.Ket thuc chuong trinh.                                                    |
+|---------------------------------------------------------------------------------|
