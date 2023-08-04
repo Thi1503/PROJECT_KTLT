@@ -3,7 +3,7 @@
 #include <string.h>
 #include <conio.h>
 
-// Khai bao cau truc du lieu v� bien
+// Khai bao cau truc du lieu va bien
 
 // cau truc ngay sinh
 struct NgaySinh
